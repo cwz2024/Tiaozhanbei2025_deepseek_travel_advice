@@ -4,6 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI 定制旅游方案</title>
     <style>
         body {
@@ -34,7 +35,7 @@
             margin-left: auto;
         }
 
-        .bot-message {
+        .assistant-message {
             background-color: #f5f5f5;
             margin-right: auto;
         }
@@ -85,13 +86,16 @@
     </style>
     <!-- 引入Markdown解析库和防XSS攻击净化库 -->
     <link rel="stylesheet" href="css/markdown.css">
+    <link rel="stylesheet" media="(max-width: 768px)" href="css/mobile.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
 </head>
 
 <body>
     <div class="chat-container" id="chat-container">
-        <div class="message bot-message">你好！我是DeepSeek，有什么可以帮您的？</div>
+        <div class="message assistant-message">
+            <p>你好！我是智能AI导游，可以为你定制旅行路线，有什么可以帮你的？</p>
+        </div>
     </div>
     <div class="input-container">
         <input type="text" id="user-input" placeholder="输入你的问题..." />
@@ -105,7 +109,14 @@
 
         // 维护对话历史
         let messages = [
-            { role: 'assistant', content: '你好！我是DeepSeek，有什么可以帮您的？' }
+            {
+                role: 'system',
+                content: '你是一个智能AI导游，可以根据用户提供的需求，为用户定制旅行路线。在用户提出与你的身份显著不符的问题时，应当告知用户并拒绝回答'
+            },
+            {
+                role: 'assistant',
+                content: '你好！我是智能AI导游，可以为你定制旅行路线，有什么可以帮你的？'
+            }
         ];
 
         userInput.addEventListener('keypress', (e) => {

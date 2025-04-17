@@ -1,0 +1,76 @@
+body {
+    padding: 10px;
+    max-width: 100%;
+}
+
+.chat-container {
+    height: 70vh;
+    margin-bottom: 15px;
+}
+
+.message {
+    max-width: 85%;
+    font-size: 14px;
+    padding: 6px 10px;
+}
+
+.input-container {
+    flex-direction: column;
+}
+
+#user-input {
+    padding: 8px;
+    font-size: 14px;
+}
+
+#user-input {
+    touch-action: manipulation;
+    /* 改善触摸响应 */
+}
+
+button {
+    padding: 8px 16px;
+    width: 100%;
+    min-height: 44px;
+}
+
+input,
+textarea,
+select {
+    font-size: 16px;
+}
+
+.input-container {
+    gap: 8px;
+    position: sticky;
+    bottom: 0;
+    background: white;
+    padding: 10px 0;
+}
+
+/* 小屏幕设备适配 */
+@media (max-width: 480px) {
+    .chat-container {
+        height: 65vh;
+        border-radius: 3px;
+    }
+
+    .message {
+        max-width: 90%;
+    }
+
+    .loading-dots span {
+        font-size: 24px;
+    }
+}
+
+/* 平板设备适配 */
+@media (min-width: 481px) and (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    .chat-container {
+        height: 75vh;
+    }
+}
