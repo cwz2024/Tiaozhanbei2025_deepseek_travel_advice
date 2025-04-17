@@ -33,7 +33,12 @@ app.post('/api/chat', async (req, res) => {
             content: response.data.choices[0].message.content
         });
     } catch (error) {
-        console.error('API请求失败:', error.response?.data || error.message);
+        // 修改后（兼容旧版本）
+        console.error('API请求失败:',
+            (error.response && error.response.data)
+                ? error.response.data
+                : error.message
+        );
         res.status(500).json({
             success: false,
             error: error.response?.data?.error?.message || 'API请求失败'
